@@ -18,7 +18,8 @@ Tools used:
 | bcrypt        |            |           |
 | nodemon       |            |           |
 | insomnia      |            |           |
-_________________________
+
+## Development Progress
 
 #### Backend
 - [x] Set-up Development environment
