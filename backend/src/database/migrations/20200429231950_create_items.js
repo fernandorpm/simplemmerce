@@ -11,7 +11,7 @@ exports.up = function (knex) {
         table.binary('image_4');
         //binary = bytea for PostgreSQL
 
-        table.foreign('category_id');references('id').inTable('categories');
+        table.foreign('category_id').references('id').inTable('categories');
     });
 };
 

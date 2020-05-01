@@ -7,6 +7,7 @@ module.exports = {
         const user = await connection('users')
             .where('username', username)
             .andWhere('password', password)
+            .andWhere('status', true)
             .select('unique_id', 'password')
             .first();
 

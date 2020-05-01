@@ -7,7 +7,7 @@ exports.up = function (knex) {
         table.integer('number').notNullable();
         table.string('district').notNullable();
 
-        table.foreign('user_id');references('id').inTable('users');
+        table.foreign('user_id').references('id').inTable('users');
     });
 };
 

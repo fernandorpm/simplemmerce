@@ -6,7 +6,7 @@ exports.up = function (knex) {
         table.integer('status').notNullable();
         // [0]Started, [1]Canceled, [2]Paid, [3]Finished
 
-        table.foreign('address_id');references('id').inTable('address');
+        table.foreign('address_id').references('id').inTable('address');
     });
 };
 
