@@ -1,7 +1,13 @@
 # Simplemmerce
-##### Simple e-commerce for free for small business.
-#### v 0.0.1 - Started Backend development (30/04/2020)
+Simple e-commerce for free for small business.
 
+## Update log
+###### [version] YYYY/mm/dd - Quick info catch up
+**[v 0.0.2] 2020/05/01 - Added and tested User and Category Controller, changed and fixed some routes**  
+[v 0.0.1] 2020/04/30 - Started Backend development 
+
+
+## Tools used
 
 Tools used:
 | Backend       | Frontend   | Mobile    |
@@ -11,7 +17,7 @@ Tools used:
 | express       |     -      |     -     |
 | bcrypt        |            |           |
 | nodemon       |            |           |
-
+| insomnia      |            |           |
 _________________________
 
 #### Backend
