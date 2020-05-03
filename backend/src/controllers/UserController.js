@@ -10,6 +10,14 @@ module.exports = {
         const authority = 0;
         const encrypted_password = encryptPassword(password);
 
+        const [new_username] = await connection('users')
+            .where('username', username)
+            .select('username');
+        
+        if (new_username) {
+            return res.status(204).send('This username is already in use!');
+        }
+
         await connection('users').insert({
             id,
             username,
@@ -33,9 +41,10 @@ module.exports = {
         const auth_password = req.headers.auth2;
         const { new_password } = req.body;
         const new_encrypted_password = encryptPassword(new_password);
+
         await connection('users')
-            .where('id', id)
-            .andWhere('password', password)
+            .where('id', auth_id)
+            .andWhere('password', auth_password)
             .update({ password: new_encrypted_password });
 
         return res.send('Password updated!');
@@ -75,9 +84,9 @@ module.exports = {
     },
 
     async delete(req, res) {
-        const { id } = req.params;
         const auth_id = req.headers.auth1;
         const auth_password = req.headers.auth2;
+        const { id } = req.params;
 
         const [authority_level] = await connection('users')
             .where('id', auth_id)

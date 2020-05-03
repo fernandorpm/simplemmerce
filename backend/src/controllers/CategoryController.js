@@ -6,24 +6,30 @@ module.exports = {
         const auth_password = req.headers.auth2;
         const { name, description, tag_1, tag_2, tag_3 } = req.body;
 
-
         const [authority_level] = await connection('users')
             .where('id', auth_id)
             .andWhere('password', auth_password)
             .select('authority');
 
-        if (authority_level.authority > 0) {
-            await connection('categories').insert({
-                name,
-                description,
-                tag_1,
-                tag_2,
-                tag_3
-            });
+        const [new_category] = await connection('items')
+            .where('name', name)
+            .select('name');
 
-        } else {
+        if (authority_level.authority < 1) {
             return res.send("You don't have enough authority to create a category.");
         }
+        
+        if (new_category) {
+            return res.send('This category already exists!');
+        }
+
+        await connection('categories').insert({
+            name,
+            description,
+            tag_1,
+            tag_2,
+            tag_3
+        });
 
         res.json({ name, description });
     },
@@ -45,7 +51,6 @@ module.exports = {
 
         if (authority_level.authority > 0) {
             await connection('categories').where('id', id).delete();
-
         } else {
             return res.send("You don't have enough authority to delete a category.");
         }

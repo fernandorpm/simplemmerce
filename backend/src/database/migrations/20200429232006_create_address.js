@@ -6,6 +6,8 @@ exports.up = function (knex) {
         table.string('street').notNullable();
         table.integer('number').notNullable();
         table.string('district').notNullable();
+        table.string('city').notNullable();
+        table.string('state', 2).notNullable();
 
         table.foreign('user_id').references('id').inTable('users');
     });

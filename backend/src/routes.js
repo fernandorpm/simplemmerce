@@ -17,12 +17,12 @@ routes.post('/categories', CategoryController.create);
 routes.get('/categories', CategoryController.index);
 routes.delete('/categories/:id', CategoryController.delete);
 
-// routes.post('/items', ItemController.create);
-// routes.get('/items', ItemController.index);
-// routes.get('/items', ItemController.index_category)
-// routes.get('/items/:id', ItemController.info);
-// routes.put('/items/:id', ItemController.update);
-// routes.delete('/items/:id', ItemController.delete);
+routes.post('/items', ItemController.create);
+routes.get('/items', ItemController.index);
+routes.get('/items/:category_id', ItemController.index_category)
+routes.get('/items/details/:id', ItemController.details);
+routes.put('/items/:id', ItemController.update);
+routes.delete('/items/:id', ItemController.delete);
 
 routes.post('/users', UserController.create);
 routes.get('/users', UserController.index);
@@ -30,11 +30,12 @@ routes.put('/users', UserController.update);
 routes.put('/users/authority', UserController.updateAuthority);
 routes.delete('/users/:id', UserController.delete);
 
-// routes.post('/address', AddressController.create);
-// routes.get('/address/:user_id', AddressController.index);
-// routes.get('/address/:id', AddressController.info);
-// routes.put('/address/:id', AddressController.update);
-// routes.delete('/address/:id', AddressController.delete);
+routes.post('/address', AddressController.create);
+routes.get('/address', AddressController.index); 
+// ^ based on header authorization so users' addresses remains private
+routes.get('/address/:id', AddressController.details);
+routes.put('/address/:id', AddressController.update);
+routes.delete('/address/:id', AddressController.delete);
 
 // routes.post('/orders', OrderController.create);
 // routes.get('/orders', OrderController.index);
