@@ -32,19 +32,19 @@ routes.delete('/users/:id', UserController.delete);
 
 routes.post('/address', AddressController.create);
 routes.get('/address', AddressController.index); 
-// ^ based on header authorization so users' addresses remains private
+// ^ based on header authorization so users' address remains private
 routes.get('/address/:id', AddressController.details);
 routes.put('/address/:id', AddressController.update);
 routes.delete('/address/:id', AddressController.delete);
 
-// routes.post('/orders', OrderController.create);
-// routes.get('/orders', OrderController.index);
-// routes.get('/orders/:id', OrderController.info);
-// routes.put('/orders/:id', OrderController.update);
+routes.post('/orders', OrderController.create);
+routes.get('/orders', OrderController.index);
+routes.get('/orders/:id', OrderController.details);
+routes.put('/orders/:id', OrderController.update);
 
-// routes.post('orderitems', OrderItemController.create);
-// routes.get('orderitems', OrderItemController.index);
-// routes.delete('orderitems', OrderItemController.delete);
+routes.post('/orderitems/:order_id', OrderItemController.create);
+routes.get('/orderitems', OrderItemController.index);
+routes.delete('/orderitems/:id', OrderItemController.delete);
 
 
 module.exports = routes;

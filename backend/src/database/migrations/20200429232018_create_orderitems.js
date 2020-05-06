@@ -3,7 +3,7 @@ exports.up = function (knex) {
         table.increments('id');
         table.integer('order_id').notNullable();
         table.integer('item_id').notNullable();
-        table.integer('value').notNullable();
+        table.float('value').notNullable();
 
         table.foreign('order_id').references('id').inTable('orders');
         table.foreign('item_id').references('id').inTable('items');

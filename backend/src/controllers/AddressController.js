@@ -15,6 +15,15 @@ module.exports = {
             return res.send("Your credentials couldn't be identified. Please try again after reconnecting");
         }
 
+        const [address] = await connection('addresses')
+            .where('id', auth_id)
+            .andWhere('password', auth_password)
+            .select('id');
+
+        if (address) {
+            return res.send("There's already an address registered to your account. Try updating it!");
+        }
+
         await connection('addresses').insert({
             user_id: auth_id,
             zipcode,
